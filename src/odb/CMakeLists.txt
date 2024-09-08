@@ -81,3 +81,19 @@ if(ENABLE_TESTS)
     odb
   )
 endif()
+
+add_custom_target(
+  odb_messages ${CMAKE_SOURCE_DIR}/etc/find_messages.py > messages.txt
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+  DEPENDS
+    db
+    cdl
+    defin
+    defout
+    lefin
+    lefout
+    zutil
+    gdsin
+)
+
+add_dependencies(odb odb_messages)
